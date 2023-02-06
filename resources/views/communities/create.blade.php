@@ -29,7 +29,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="description" id="description" cols="5" rows="5" class="form-control"></textarea>
+                                <textarea name="description" id="description" cols="5" rows="5" class="form-control @error('name') is-invalid @enderror" required autocomplete="description" autofocus>{{ old('description') }}</textarea>
 
 
                                 @error('description')

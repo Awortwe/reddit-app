@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('community_topic', function (Blueprint $table) {
             $table->foreignId('community_id')->constrained();
             $table->foreignId('topic_id')->constrained();
+            $table->timestamps();
         });
     }
 

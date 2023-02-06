@@ -38,7 +38,11 @@ class CommunityController extends Controller
      */
     public function store(StoreCommunityRequest $request)
     {
-        //
+        $community = Community::create($request->validated() + ['user_id' => auth()->id]);
+
+        $community->topics()->attach($request->topics);
+
+        return redirect()->route('communities.show');
     }
 
     /**
@@ -49,7 +53,7 @@ class CommunityController extends Controller
      */
     public function show(Community $community)
     {
-        //
+        return $community->name;
     }
 
     /**
