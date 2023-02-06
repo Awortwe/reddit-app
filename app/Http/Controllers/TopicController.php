@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Community;
-use App\Http\Requests\StoreCommunityRequest;
-use App\Http\Requests\UpdateCommunityRequest;
+use App\Models\Topic;
+use App\Http\Requests\StoreTopicRequest;
+use App\Http\Requests\UpdateTopicRequest;
 
-class CommunityController extends Controller
+class TopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,16 +25,16 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        return view('communities.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCommunityRequest  $request
+     * @param  \App\Http\Requests\StoreTopicRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCommunityRequest $request)
+    public function store(StoreTopicRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class CommunityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Community  $community
+     * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function show(Community $community)
+    public function show(Topic $topic)
     {
         //
     }
@@ -53,10 +53,10 @@ class CommunityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Community  $community
+     * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Community $community)
+    public function edit(Topic $topic)
     {
         //
     }
@@ -64,11 +64,11 @@ class CommunityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCommunityRequest  $request
-     * @param  \App\Models\Community  $community
+     * @param  \App\Http\Requests\UpdateTopicRequest  $request
+     * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCommunityRequest $request, Community $community)
+    public function update(UpdateTopicRequest $request, Topic $topic)
     {
         //
     }
@@ -76,10 +76,10 @@ class CommunityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Community  $community
+     * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Community $community)
+    public function destroy(Topic $topic)
     {
         //
     }
