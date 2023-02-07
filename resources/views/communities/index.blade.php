@@ -21,15 +21,15 @@
 
                         </thead>
                         <tbody>
-                            @foreach ($communities as $item)
+                            @foreach ($communities as $community)
                                 <tr>
                                     <td>
                                         <a href="{{ route('communities.show', $item) }}" style="text-decoration: none">
-                                            {{ $item->name }}
+                                            {{ $community->name }}
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('communities.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('communities.edit', $community) }}" class="btn btn-primary btn-sm">
                                             Edit
                                         </a>
                                     </td>

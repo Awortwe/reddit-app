@@ -73,7 +73,9 @@ class CommunityController extends Controller
      */
     public function edit(Community $community)
     {
-        //
+        $topics = Topic::all();
+        $community->load('topics');
+        return view('communities.edit', compact('community', 'topics'));
     }
 
     /**
