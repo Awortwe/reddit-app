@@ -17,7 +17,8 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        //
+        $communities = Community::where('user_id', auth()->id())->get();
+        return view('communities.index', compact('communities'));
     }
 
     /**
@@ -50,7 +51,7 @@ class CommunityController extends Controller
             $community->topics()->attach($request->topics);
         }
 
-        return redirect()->route('communities.show', $community);
+        return redirect()->route('communities.index');
     }
 
     /**
