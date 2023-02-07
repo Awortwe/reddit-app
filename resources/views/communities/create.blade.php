@@ -45,9 +45,9 @@
 
                             <div class="col-md-6">
                                 @foreach ($topics as $topic)
-                                    <input type="checkbox" name="topics[]" id="{{ $topic->id }}">
+                                    <input type="checkbox" name="topics[]" value="{{ $topic->id }}">
                                     {{ $topic->name }}
-                                    <br>
+                                    <br/>
                                 @endforeach
                             </div>
                         </div>

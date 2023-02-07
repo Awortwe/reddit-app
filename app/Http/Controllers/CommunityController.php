@@ -6,6 +6,7 @@ use App\Models\Community;
 use App\Http\Requests\StoreCommunityRequest;
 use App\Http\Requests\UpdateCommunityRequest;
 use App\Models\Topic;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityController extends Controller
 {
@@ -38,11 +39,18 @@ class CommunityController extends Controller
      */
     public function store(StoreCommunityRequest $request)
     {
-        $community = Community::create($request->validated() + ['user_id' => auth()->id]);
+        $community = Community::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => auth()->id()
+        ]);
 
-        $community->topics()->attach($request->topics);
+        if($request->topics)
+        {
+            $community->topics()->attach($request->topics);
+        }
 
-        return redirect()->route('communities.show');
+        return redirect()->route('communities.show', $community);
     }
 
     /**

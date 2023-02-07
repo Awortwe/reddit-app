@@ -10,4 +10,9 @@ class Topic extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class);
+    }
 }
