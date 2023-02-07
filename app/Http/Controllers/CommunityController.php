@@ -73,6 +73,10 @@ class CommunityController extends Controller
      */
     public function edit(Community $community)
     {
+        if($community->user_id != auth()->id())
+        {
+            abort(403);
+        }
         $topics = Topic::all();
         $community->load('topics');
         return view('communities.edit', compact('community', 'topics'));
@@ -87,7 +91,13 @@ class CommunityController extends Controller
      */
     public function update(UpdateCommunityRequest $request, Community $community)
     {
-        //
+        if($community->user_id != auth()->id())
+        {
+            abort(403);
+        }
+        $community->update($request->validated());
+        $community->topics()->sync($request->topics);
+        return redirect()->route('communities.index')->with('message', 'Community updated successfully');
     }
 
     /**
@@ -98,6 +108,11 @@ class CommunityController extends Controller
      */
     public function destroy(Community $community)
     {
-        //
+        if($community->user_id != auth()->id())
+        {
+            abort(403);
+        }
+        $community->delete();
+        return redirect()->back()->with('message', 'Community deleted successfully');
     }
 }
