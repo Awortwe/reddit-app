@@ -6,7 +6,9 @@ use App\Models\Community;
 use App\Http\Requests\StoreCommunityRequest;
 use App\Http\Requests\UpdateCommunityRequest;
 use App\Models\Topic;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Stringable;
 
 class CommunityController extends Controller
 {
@@ -43,7 +45,8 @@ class CommunityController extends Controller
         $community = Community::create([
             'name' => $request->name,
             'description' => $request->description,
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
+            'slug' => Str::slug($request->name)
         ]);
 
         if($request->topics)
