@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Community;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,16 @@ class CommunityPost extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request, Community $community)
     {
-        //
+        $community->posts()->create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'post_text' => $request->post_text,
+            'post_url' => $request->post_url
+        ]);
+
+        return redirect()->route('communities.show', $community);
     }
 
     /**
